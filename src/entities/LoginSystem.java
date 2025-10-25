@@ -4,7 +4,7 @@ public class LoginSystem {
 
     private String nome;
     public String user;
-    private final String  senha;
+    private String  senha;
 
     public LoginSystem(String nome, String user, String senha){
         this.nome = nome;
@@ -27,6 +27,16 @@ public class LoginSystem {
     public String getSenha() {
         return senha;
     }
+    public void setSenha (String novaSenha){
+        this.senha = novaSenha;
+    }
+
+
+
+    public String toString(){
+        return "OLÁ, " + user + " SEJA BEM-VINDO AO APP NONAME";
+    }
+
 
 
 
