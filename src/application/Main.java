@@ -1,6 +1,5 @@
 package application;
 import java.util.Scanner;
-import entities.Usuario;
 import entities.LoginSystem;
 
 
@@ -9,9 +8,9 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int resposta;
-        String user, senha, nome;
-        Usuario usuario1;
-        Usuario login = new Usuario("admin", "123");
+        String user, senha;
+        LoginSystem usuario1;
+        LoginSystem login = new LoginSystem("admin", "123");
 
         do {
             System.out.println("-------- BEM-VINDO AO NONAME --------");
@@ -34,9 +33,10 @@ public class Main {
                         System.out.print("Senha: ");
                         senha = sc.nextLine();
 
-
-                        if (user.equals(login.getUserUsuario()) && senha.equals(login.getSenha())){
+                        if (user.equals(LoginSystem.getUser()) && senha.equals(login.getSenha())){
                             System.out.println("*ENTRA NO APP*");
+
+                            break;
                         } else {
                             tentativas--;
                             System.out.println("User ou senha incorreto. Tente novamente.");
@@ -52,22 +52,27 @@ public class Main {
 
                 case 2:
                     System.out.println("====== CADASTRO ======");
-                    System.out.print("Digite seu nome: ");
-                    nome = sc.nextLine();
                     System.out.print("Tem algum user em mente: ");
                     char cadastroUser = sc.next().charAt(0);
-                    if (cadastroUser == 's' ){
+
+                    if (cadastroUser == 's' ) {
                         System.out.print("Digite seu user: ");
                         String User = sc.nextLine();
                         sc.nextLine();
                         System.out.print("Digite sua senha: ");
                         senha = sc.nextLine();
-                        usuario1 = new Usuario(nome, senha);
-                    }else {
+                        usuario1 = new LoginSystem(User, senha);
+                        String saudadcao = usuario1.toString();
+                        System.out.println(saudadcao);
+
+                    }else if (cadastroUser == 'n') {
                         String randomName = RandomNameGenerator.generante();
                         System.out.print("Digite sua senha: ");
                         senha = sc.nextLine();
-                        usuario1 = new Usuario(nome, senha);
+                        sc.nextLine();
+                        usuario1 = new LoginSystem(randomName, senha);
+
+                        System.out.println(usuario1);
                     }
 
                 break;
